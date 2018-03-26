@@ -42,7 +42,7 @@ public class Partida {
 			terreno.put("piso", " · : piso vacío, se puede caminar por aca");
 			terreno.put("pared", " # : no se pueden traspasar");
 			terreno.put("escalera", " ¬ : este es tu objetivo");
-		    terreno.put("niebla", " ~ : todo lo que este fuera del rango de visión");
+		    terreno.put("niebla", " ~ : todo lo que esté fuera del rango de visión");
 
 		Map<String, Map<String, String>> iconos = new LinkedHashMap<>();
 			iconos.put("personajes", personajes);
@@ -50,7 +50,8 @@ public class Partida {
 		
 		response.put("iconos",iconos);
 		
-		response.put("jugar", URL+" - te recomiendo abrirla en otra tab (asi podes leer esto)");
+		response.put("jugar", URL);
+		response.put("recomendacion", "te recomiendo abrirla en otra tab (asi podes leer esto)");
 		
 		return response;
 		
