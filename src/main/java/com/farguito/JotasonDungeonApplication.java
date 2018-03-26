@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
-public class JsonDungeonApplication {
+public class JotasonDungeonApplication {
 	
 	public static void main(String[] args) {
-		SpringApplication.run(JsonDungeonApplication.class, args);
+		SpringApplication.run(JotasonDungeonApplication.class, args);
 	}
 	
 	

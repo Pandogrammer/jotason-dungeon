@@ -19,7 +19,8 @@ import com.farguito.personajes.Jugador;
 @RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 public class Partida {
 	
-	public static String URL = "http://25.87.195.123:8080";
+	//public static String URL = "http://25.87.195.123:8080";
+	public static String URL = "https://jotason-dungeon.herokuapp.com";
     
 	@Autowired
 	Jugador pj;
