@@ -52,16 +52,18 @@ public class Partida {
 		
 	@GetMapping("iniciar")
 	public Respuesta init(@RequestParam(value = "nombre", required = false) String nombre) {
-		Respuesta respuesta = new Respuesta();		
+		Respuesta respuesta = new Respuesta();	
+		if(pj.estaMuerto()) {
+			jugando = false;
+			pj.init();			
+		}
+		
 		if(jugando) {
 			respuesta.agregarMensaje("ya estas jugando");
 			respuesta.agregar("actualizar", URL_PARTIDA);
-		} else if (nombre == null) {
+		} else if (nombre == null || nombre.equalsIgnoreCase("TU_NOMBRE")) {
 			respuesta.agregarMensaje("escribí tu nombre en la URL de la siguiente forma:");
 			respuesta.agregar("link", URL_PARTIDA+"/iniciar?nombre=TU_NOMBRE");
-		} else if (nombre.equalsIgnoreCase("TU_NOMBRE")) {
-			respuesta.agregar("duh", "tampoco te lo tomes tan literal");		
-			respuesta.agregar("link", URL_PARTIDA+"/iniciar?nombre=TU_NOMBRE");	
 		} else {
 			pj.setPartida(this);
 			mundo.agregarNuevoJugador(pj);

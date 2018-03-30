@@ -16,7 +16,7 @@ public class Rata extends Monstruo {
 		super();
 		random.setSeed(System.currentTimeMillis());
 		this.nombre = "rata";
-		this.vision = 1;
+		this.vision = 2;
 		this.icono = "r";
 		this.vidaTotal = 1;
 		this.vidaActual = vidaTotal;

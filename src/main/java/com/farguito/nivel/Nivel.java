@@ -21,7 +21,7 @@ public class Nivel {
 
 	Random random = new Random(System.currentTimeMillis());
 	
-	int filas = 14;
+	int filas = 7;
 	int columnas = filas+filas/2;
 	int piso = 0;
 	

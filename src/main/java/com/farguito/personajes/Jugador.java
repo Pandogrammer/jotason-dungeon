@@ -22,7 +22,7 @@ public class Jugador extends Personaje {
 	}
 	
 	@PostConstruct
-	private void init() {
+	public void init() {
 		this.vision = 3;
 		this.icono = "@";
 		this.vidaTotal = 5;
