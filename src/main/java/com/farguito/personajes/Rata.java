@@ -46,8 +46,8 @@ public class Rata extends Monstruo {
 				Point destino = new Point(objetivo.getX(), objetivo.getY());
 				
 				if(!objetivo.estaMuerto() 
-				|| objetivo.getZ() != this.z
-				|| origen.distance(destino) > vision*2) {
+				&& objetivo.getZ() == this.z
+				&& origen.distance(destino) < vision*2) {
 					if(!intentarAtacar())
 						intentarAcercarse(nivel);
 				} else objetivo = null;
