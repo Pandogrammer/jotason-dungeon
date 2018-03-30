@@ -1,9 +1,8 @@
 package com.farguito.personajes;
 
-public abstract class Enemigo extends Personaje {
+public abstract class Monstruo extends Personaje {
 
 	protected Personaje objetivo;
-	protected String nombre;
 
 	public Personaje getObjetivo() {
 		return objetivo;
@@ -13,13 +12,6 @@ public abstract class Enemigo extends Personaje {
 		this.objetivo = objetivo;
 	}
 
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
 
 	
 }

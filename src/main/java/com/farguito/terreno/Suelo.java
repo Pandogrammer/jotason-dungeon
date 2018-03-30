@@ -1,11 +1,12 @@
 package com.farguito.terreno;
 
-public class Piso extends PorcionTerreno {
+public class Suelo extends Terreno {
 	
-	public Piso() {
-		super();
+	public Suelo(int x, int y) {
+		super(x, y);
 		this.icono = "·";
 		this.traspasable = true;
 	}
+
 	
 }

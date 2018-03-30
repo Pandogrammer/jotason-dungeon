@@ -1,14 +1,23 @@
 package com.farguito.personajes;
 
+import com.farguito.nivel.Nivel;
+
 public abstract class Personaje {
 	
 	int vision;	
 	int x;
 	int y;
+	int z;
 	String icono;
 	int vidaTotal;
 	int vidaActual;
-	int daño;
+	String nombre;
+	
+	int cansancio;
+	float recuperacion = 0.25f;
+	
+	int ataque;
+	int rango;
 	
 	public int getVision() {
 		return vision;
@@ -27,6 +36,13 @@ public abstract class Personaje {
 	}
 	public void setY(int y) {
 		this.y = y;
+	}
+	
+	public int getZ() {
+		return z;
+	}
+	public void setZ(int z) {
+		this.z = z;
 	}
 	public String getIcono() {
 		return icono;
@@ -51,18 +67,54 @@ public abstract class Personaje {
 		return icono;
 	}
 	
-	public void dañar(int daño) {
-		vidaActual = vidaActual - daño;
+	public void recibirDaño(int daño) {
+		vidaActual -= daño;
 	}
-	public int getDaño() {
-		return daño;
+	public int getAtaque() {
+		return ataque;
 	}
-	public void setDaño(int daño) {
-		this.daño = daño;
+	public void setAtaque(int ataque) {
+		this.ataque = ataque;
+	}
+	public int getCansancio() {
+		return cansancio;
+	}
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 	
-	public boolean muerto() {
+	
+	
+	
+	public boolean estaMuerto() {
 		return vidaActual <= 0;
+	}
+	
+	public boolean puedeActuar() {
+		return cansancio <= 0;
+	}
+	
+	public void agregarCansancio(int cansancio) {
+		this.cansancio += cansancio;
+	}
+	
+
+	protected void descansar() {
+		cansancio -= recuperacion;
+	}
+	
+	
+	public abstract void actualizar(Nivel nivel);
+	
+	
+	public int getRango() {
+		return rango;
+	}
+	public void setRango(int rango) {
+		this.rango = rango;
 	}
 	
 	

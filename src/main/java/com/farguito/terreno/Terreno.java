@@ -1,17 +1,21 @@
 package com.farguito.terreno;
 
-import java.util.List;
-
 import com.farguito.items.Item;
 import com.farguito.personajes.Personaje;
 
-public abstract class PorcionTerreno {
-	
-	protected boolean traspasable;
-	protected boolean explorado = false;
-	protected List<Item> items;
-	protected Personaje personaje;
+public abstract class Terreno {
+
+	int x;
+	int y;
 	protected String icono;
+	protected boolean traspasable;
+	protected Item item;
+	protected Personaje personaje;
+	
+	public Terreno(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
 
 	public boolean isTraspasable() {
 		return traspasable;
@@ -21,20 +25,12 @@ public abstract class PorcionTerreno {
 		this.traspasable = traspasable;
 	}
 
-	public boolean isExplorado() {
-		return explorado;
+	public Item getItem() {
+		return item;
 	}
 
-	public void setExplorado(boolean explorado) {
-		this.explorado = explorado;
-	}
-
-	public List<Item> getItems() {
-		return items;
-	}
-
-	public void setItems(List<Item> items) {
-		this.items = items;
+	public void setItem(Item item) {
+		this.item = item;
 	}
 
 	public Personaje getPersonaje() {
@@ -45,7 +41,8 @@ public abstract class PorcionTerreno {
 		this.personaje = personaje;
 	}
 	
-	public boolean ocupado() {
+	
+	public boolean estaOcupado() {
 		if(personaje != null)
 			return true;
 		else 
@@ -53,10 +50,19 @@ public abstract class PorcionTerreno {
 	}
 
 	public String toString() {
-		if(!explorado) return "~";
-		else if (personaje != null) return personaje.toString();
+		if (personaje != null && !personaje.estaMuerto()) return personaje.toString();
+		else if (item != null) return item.toString();
 		else return icono;
 	}
+
+	public int getX() {
+		return x;
+	}
+
+	public int getY() {
+		return y;
+	}
+	
 	
 	
 }
