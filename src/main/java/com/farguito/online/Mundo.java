@@ -21,6 +21,7 @@ import com.farguito.personajes.Jugador;
 import com.farguito.personajes.Monstruo;
 import com.farguito.personajes.Personaje;
 import com.farguito.terreno.Escalera;
+import com.farguito.terreno.Pared;
 
 @RestController
 @ApplicationScope

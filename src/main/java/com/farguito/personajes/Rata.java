@@ -41,7 +41,13 @@ public class Rata extends Monstruo {
 					chequearVision(nivel);
 				}
 			} else {
-				if(!objetivo.estaMuerto()) {
+
+				Point origen = new Point(x, y);
+				Point destino = new Point(objetivo.getX(), objetivo.getY());
+				
+				if(!objetivo.estaMuerto() 
+				|| objetivo.getZ() != this.z
+				|| origen.distance(destino) > vision*2) {
 					if(!intentarAtacar())
 						intentarAcercarse(nivel);
 				} else objetivo = null;
@@ -67,12 +73,12 @@ public class Rata extends Monstruo {
 	}
 	
 	private void chequearVision(Nivel nivel) {
-		for(int i = x-vision; i <= x+rango; i++) {
-			for(int j = y-rango; j <= y+rango; j++) {
+		for(int i = x-vision; i <= x+vision; i++) {
+			for(int j = y-vision; j <= y+vision; j++) {
 				Point origen = new Point(x, y);
 				Point destino = new Point(i, j);
 				if( origen.distance(destino) > 0  //asi no me autotargetea
-				&&  origen.distance(destino) <= rango) { 
+				&&  origen.distance(destino) <= vision) { 
 					try{
 						//mas adelante se puede cambiar para que se ataquen entre si (?
 						if(nivel.getTerreno()[i][j].getPersonaje() instanceof Jugador) {
