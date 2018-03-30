@@ -150,5 +150,17 @@ public class Mundo extends Thread {
 		return respuesta;
 		
 	}
+	
+	@GetMapping("online")
+	public Respuesta jugadoresOnline() {
+		Respuesta respuesta = new Respuesta();
+		Respuesta online = new Respuesta();
+		for(int i = 0; i < jugadores.size(); i++) {
+			online.agregar(String.valueOf(i), jugadores.get(i).getNombre());
+		}
+		respuesta.agregar("online", online);
+		return respuesta;
+		
+	}
 
 }

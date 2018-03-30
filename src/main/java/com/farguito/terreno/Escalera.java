@@ -24,8 +24,11 @@ public class Escalera extends Terreno implements Activable {
 		destino.getTerreno()[x][y].setPersonaje(pj);
 		pj.setZ(destino.getPiso());
 		
+		if(origen.getPiso() < destino.getPiso())
+			respuesta.agregarMensaje("subiste la escalera");
+		else 
+			respuesta.agregarMensaje("bajaste la escalera");
 		
-		respuesta.agregarMensaje("recorriste la escalera");
 		return respuesta;
 	}
 

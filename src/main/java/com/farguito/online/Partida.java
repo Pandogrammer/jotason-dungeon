@@ -72,7 +72,7 @@ public class Partida {
 			initMenu();
 			menuPrincipal.addAll(menuesPosibles.values());
 			respuesta = menuPrincipal();
-			respuesta.agregarMensaje("Bienvenido, "+nombre+" al mundo de JOTASON!");			
+			respuesta.agregarMensaje("Bienvenido, "+nombre+", al mundo de JOTASON!");			
 		}
 		return respuesta;
 	}
@@ -89,11 +89,14 @@ public class Partida {
 			});
 			*/
 			respuesta.agregar("piso", pj.getZ());
+			respuesta.agregar("vida", pj.mostrar().get("vida"));
 			respuesta.agregar("mapa", mapa.mostrar());
 			respuesta.agregar("actualizar", URL_PARTIDA);
+			if(pj.estaMuerto())
+				respuesta.agregar("reiniciar", URL_PARTIDA+"/iniciar?nombre="+pj.getNombre());
 			respuesta.agregar("mover", movimiento());
 			respuesta.agregar("atacar", ataque());
-			respuesta.agregar("personaje", pj.mostrar());
+			
 			respuesta.agregarMensaje(mensajes);
 			
 			mensajes.clear();
@@ -103,6 +106,13 @@ public class Partida {
 		}
 		
 		return respuesta;
+	}
+	
+	@GetMapping("personaje")
+	public Respuesta personaje() {
+		Respuesta respuesta = new Respuesta();
+		respuesta.agregar("informacion", pj.mostrar());
+		return  respuesta;
 	}
 	
 	
