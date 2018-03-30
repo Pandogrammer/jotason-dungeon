@@ -80,8 +80,10 @@ public class Rata extends Monstruo {
 				if( origen.distance(destino) > 0  //asi no me autotargetea
 				&&  origen.distance(destino) <= vision) { 
 					try{
+						Personaje pj = nivel.getTerreno()[i][j].getPersonaje(); 
 						//mas adelante se puede cambiar para que se ataquen entre si (?
-						if(nivel.getTerreno()[i][j].getPersonaje() instanceof Jugador) {
+						if(!pj.estaMuerto()
+						&& pj instanceof Jugador) {
 							objetivo = nivel.getTerreno()[i][j].getPersonaje();
 						}
 					} catch(Exception ex) {
