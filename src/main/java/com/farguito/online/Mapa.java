@@ -48,6 +48,7 @@ public class Mapa {
 				Point origen = new Point(jugador.getX(), jugador.getY());
 				Point destino = new Point(i, j);
 				if(origen.distance(destino) <= jugador.getVision()) {
+					Terreno terr = espacio[i][j];
 					value.append(espacio[i][j].toString()+" ");
 				} else
 					value.append(noVisible+" ");
