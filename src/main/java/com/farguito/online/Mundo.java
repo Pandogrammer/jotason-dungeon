@@ -90,8 +90,8 @@ public class Mundo extends Thread {
 				jugadores.remove(pj.getId());
 			}
 
-			List<Monstruo> monstruosMuertos = new ArrayList<>();
 			for(Nivel n : niveles) {
+				List<Monstruo> monstruosMuertos = new ArrayList<>();
 				for(Monstruo m : n.getMonstruos()) {
 					if(m.estaMuerto())
 						monstruosMuertos.add(m);
@@ -99,10 +99,11 @@ public class Mundo extends Thread {
 						m.actualizar(getNivel(m.getZ()));
 				//de momento hacerlo asi, pero despues hay que cambiar esta pobreza
 				//le paso el nivel para que tenga todo lo necesario para manejarse
-				}				
-			}
-			for(Monstruo m : monstruosMuertos) {
-				eliminar(m);
+				}			
+				for(Monstruo m : monstruosMuertos) {
+					eliminar(m);
+					n.getMonstruos().remove(m);
+				}	
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
