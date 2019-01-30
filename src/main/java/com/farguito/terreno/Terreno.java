@@ -50,7 +50,7 @@ public abstract class Terreno {
 	}
 
 	public String toString() {
-		if (personaje != null && !personaje.estaMuerto()) return personaje.toString();
+		if (personaje != null) return personaje.toString();
 		else if (item != null) return item.toString();
 		else return icono;
 	}
